@@ -18,9 +18,15 @@ class _TabPagesState extends State<TabPages> {
   @override
   void initState() {
     controller.pagingController.addPageRequestListener((pageKey) {
-      controller.fetchPage(pageKey);
+      controller.fetchPage(pageKey, 'string argument');
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.pagingController.removePageRequestListener(controller.fetchPage); /* Erro this The argument type 'Future<void> Function(int, String)' can't be assigned to the parameter type 'void Function(int)'.*/
+    super.dispose();
   }
 
   @override

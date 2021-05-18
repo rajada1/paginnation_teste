@@ -8,7 +8,7 @@ class Controllers{
   Repository repo = Repository(CustomDio());
     final PagingController<int, Datum> pagingController =
       PagingController(firstPageKey: 0);
-  Future<void> fetchPage(int currentPage) async {
+  Future<void> fetchPage(int currentPage, String status) async {
     var rest = await repo.getItens(currentPage, 20);
     final isLastPage = rest.totalPages < currentPage;
     if (isLastPage) {
